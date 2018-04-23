@@ -1,1 +1,32 @@
+import pandas
+from statistics import stdev
+import numpy as np
+import matplotlib.pyplot as plt
+import ccxt
+import threading
+import time
+
+exchange = ccxt.gdax({
+
+	'apiKey': '353266b13a6e0a04e718d2edf5206fd', # standard
+	'secret': 'MQ7hYkgGOm3jkq0DXyzkb+59T1AiizJa1yzR+JIVXbv+BOY9BjaMBQ8kfqSRt7Vizcpv/5oZe3YmZeoLrsLFgA==',
+	'password': '261suyr7o8q',
+    'verbose': False,
+
+
+
+})
+
+# order = exchange.create_limit_buy_order("BTC/USD", "0.01", "9000", { 'post_only': 'true' })
+# print(order)
+buying = False
+collection_size = 10  # decides the size of the samples taken to calculate the avg and stdev
+curr_accept_price = None
+percent_gain = 1.002
+curr_buy_order_price = None
+last_points = []
+in_middle_of_requesting = False
+order_open = False
+open_order_id = None
+
 
